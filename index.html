@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WEVE: Western Engineering Virtual Explorer</title>
+<meta name="description" content="Companion page for the WEVE Luanti prototype: the four Western Engineering buildings, their information points, and how to download and play the world. SE3351 student project.">
+<style>
+:root {
+  --bg: #fbfaf8; --surface: #ffffff; --text: #1d1a22; --muted: #5c5766;
+  --line: #e4e0ea; --accent: #4f2683; --accent-soft: #f1ecf8; --focus: #b5179e;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #15131a; --surface: #1d1a24; --text: #ece9f2; --muted: #a9a3b5;
+          --line: #2f2a3a; --accent: #b99be6; --accent-soft: #2a2238; --focus: #f08bd8; }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--bg); color: var(--text);
+  font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 4px; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--surface); padding: 8px 12px; z-index: 10; }
+.skip:focus { left: 8px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+header.top { border-bottom: 1px solid var(--line); background: var(--surface); }
+header.top .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; justify-content: space-between; padding-top: 14px; padding-bottom: 14px; }
+.brand { font-weight: 700; letter-spacing: .02em; }
+.brand span { color: var(--muted); font-weight: 400; }
+nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 15px; }
+.hero { padding: 48px 0 28px; }
+.hero h1 { font-size: clamp(28px, 5vw, 44px); line-height: 1.15; margin: 0 0 12px; max-width: 20ch; }
+.hero p { color: var(--muted); max-width: 62ch; margin: 0 0 20px; font-size: 18px; }
+.btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn { display: inline-block; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: 600; border: 1px solid var(--accent); }
+.btn.primary { background: var(--accent); color: var(--bg); }
+.notice { margin-top: 18px; font-size: 14px; color: var(--muted); }
+section { padding: 28px 0; border-top: 1px solid var(--line); }
+h2 { font-size: 24px; margin: 0 0 6px; }
+h3 { font-size: 19px; margin: 0 0 4px; }
+.lead { color: var(--muted); margin: 0 0 18px; max-width: 70ch; }
+.shot { aspect-ratio: 16 / 9; border: 2px dashed var(--line); border-radius: 10px; background: var(--accent-soft);
+  display: grid; place-items: center; text-align: center; color: var(--muted); font-size: 14px; padding: 12px; }
+.shot img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+.steps { padding-left: 20px; max-width: 70ch; }
+.steps li { margin-bottom: 6px; }
+kbd { font: 13px ui-monospace, Menlo, monospace; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; background: var(--surface); }
+.index { columns: 2 260px; padding-left: 0; list-style: none; margin: 0; }
+.index li { break-inside: avoid; padding: 2px 0; }
+.index b { display: inline-block; min-width: 72px; font-variant-numeric: tabular-nums; }
+.building { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 22px; margin-bottom: 22px; }
+.building-head { display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 16px; }
+@media (min-width: 760px) { .building-head { grid-template-columns: 1.1fr 1fr; align-items: start; } }
+.meta { color: var(--muted); font-size: 15px; margin: 0 0 10px; }
+.links { font-size: 15px; margin: 8px 0 0; padding-left: 18px; }
+.pois { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+.poi { border: 1px solid var(--line); border-radius: 10px; padding: 12px; background: var(--bg); scroll-margin-top: 16px; }
+.poi .shot { margin-bottom: 10px; aspect-ratio: 4 / 3; }
+.poi .id { font: 600 12px ui-monospace, Menlo, monospace; color: var(--accent); letter-spacing: .04em; }
+.poi h4 { margin: 2px 0 6px; font-size: 16px; }
+.poi p { margin: 0 0 8px; font-size: 15px; }
+.poi a { font-size: 14px; }
+footer { border-top: 1px solid var(--line); padding: 24px 0 40px; color: var(--muted); font-size: 14px; }
+footer p { margin: 0 0 8px; max-width: 80ch; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">WEVE <span>Western Engineering Virtual Explorer</span></div>
+    <nav aria-label="Page sections">
+      <ul>
+        <li><a href="#play">Download and play</a></li>
+        <li><a href="#index">Information points</a></li>
+        <li><a href="#buildings">Buildings</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+    <div class="hero">
+      <h1>Walk Western's engineering buildings before you visit.</h1>
+      <p>WEVE is a Luanti (Minetest) world with the Spencer Engineering Building, the Claudette MacKay-Lassonde Pavilion, the Amit Chakma Engineering Building and the Thompson Engineering Building at 1 block = 1 metre. Ground floors follow Western's floor plans, and numbered information points explain each building.</p>
+      <div class="btns">
+        <a class="btn primary" href="#play">Download and play</a>
+        <a class="btn" href="#index">Read the text tour</a>
+      </div>
+      <p class="notice">Student course project (SE3351, Group 20). Not an official Western University site.</p>
+    </div>
+
+    <div class="shot" role="img" aria-label="Screenshot placeholder: aerial view of all four buildings">
+      <!-- SCREENSHOT: img/aerial.jpg (aerial view of all four buildings and the hub) -->
+      Screenshot coming: aerial view of the four buildings and the hub
+    </div>
+  </div>
+
+  <section id="play">
+    <div class="wrap">
+      <h2>Download and play</h2>
+      <p class="lead">The world runs on the free Luanti engine with the standard Minetest Game. No mods are needed.</p>
+      <ol class="steps">
+        <li>Install Luanti 5.x from <a href="https://www.luanti.org/downloads/">luanti.org/downloads</a>, then install <b>Minetest Game</b> from the Content tab.</li>
+        <li>Download the world: <a id="world-link" href="#play">weve-world.zip (link coming)</a>. The download is shared with the SE3351 course only.</li>
+        <li>Unzip it into your Luanti <code>worlds</code> folder (macOS: <code>~/Library/Application Support/minetest/worlds/</code>, Windows: <code>%APPDATA%\Luanti\worlds\</code>).</li>
+        <li>Start Luanti, choose Minetest Game, select <b>weve</b>, turn on Creative Mode and press Play Game.</li>
+        <li>You spawn on the hub plaza. Signposts point to each building: SEB and CMLP to the north, TEB to the east, ACEB to the west. Press <kbd>V</kbd> for the minimap.</li>
+      </ol>
+      <p class="lead">Can't run a 3D world? The information points below are the full text tour, and the demo video walks every building: <a id="video-link" href="#play">demo video (link coming)</a>.</p>
+    </div>
+  </section>
+
+  <section id="index">
+    <div class="wrap">
+      <h2>Information points</h2>
+      <p class="lead">Every numbered sign in the world, in order. Each one links to its card below.</p>
+      <ul class="index">
+        <li><a href="#SEB-P1"><b>SEB-P1</b> Spencer Engineering Building</a></li>
+        <li><a href="#SEB-P2"><b>SEB-P2</b> Lecture room SEB 1059</a></li>
+        <li><a href="#SEB-P3"><b>SEB-P3</b> A building that kept growing</a></li>
+        <li><a href="#SEB-P4"><b>SEB-P4</b> Leonardo da Vinci Room</a></li>
+        <li><a href="#CMLP-P1"><b>CMLP-P1</b> CMLP atrium</a></li>
+        <li><a href="#CMLP-P2"><b>CMLP-P2</b> Western's first LEED building</a></li>
+        <li><a href="#CMLP-P3"><b>CMLP-P3</b> Bridge to TEB</a></li>
+        <li><a href="#ACEB-P1"><b>ACEB-P1</b> Atrium</a></li>
+        <li><a href="#ACEB-P2"><b>ACEB-P2</b> Engineering Galleries</a></li>
+        <li><a href="#ACEB-P3"><b>ACEB-P3</b> Tiered classrooms 1415 and 1420</a></li>
+        <li><a href="#ACEB-P4"><b>ACEB-P4</b> The cantilever</a></li>
+        <li><a href="#TEB-P1"><b>TEB-P1</b> Thompson Engineering Building</a></li>
+        <li><a href="#TEB-P2"><b>TEB-P2</b> Teaching labs</a></li>
+        <li><a href="#TEB-P3"><b>TEB-P3</b> Four storeys and a bridge</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="buildings">
+    <div class="wrap">
+      <h2>Buildings</h2>
+      <p class="lead">Upper floors are shells with windows and lights; the rooms are on each building's main ground level.</p>
+
+      <article class="building" id="seb" aria-labelledby="seb-h">
+        <div class="building-head">
+          <div>
+            <h3 id="seb-h">Spencer Engineering Building (SEB)</h3>
+            <p class="meta">North of the hub · opened 1959 · Collegiate Gothic, three storeys</p>
+            <p>The original engineering building, home of the Dean's office and two departments, with additions from 1969 to 2016.</p>
+            <ul class="links">
+              <li><a href="https://www.eng.uwo.ca/mechanical/">Mechanical and Materials Engineering</a></li>
+              <li><a href="https://www.eng.uwo.ca/civil/">Civil and Environmental Engineering</a></li>
+            </ul>
+          </div>
+          <div class="shot" role="img" aria-label="Screenshot placeholder: SEB">
+            <!-- SCREENSHOT: img/seb.jpg (SEB exterior or north-wing corridor) -->
+            Screenshot coming: SEB
+          </div>
+        </div>
+        <div class="pois">
+          <div class="poi" id="SEB-P1">
+            <div class="shot" role="img" aria-label="Screenshot placeholder: SEB-P1">Screenshot coming</div>
+            <div class="id">SEB-P1</div>
+            <h4>Spencer Engineering Building</h4>
+            <p>Built 1958-59 and opened Oct 30, 1959 (architect Ronald Murphy). Three storeys, Collegiate Gothic. Home of the Dean's office and of Mechanical and Materials, and Civil and Environmental Engineering.</p>
+            <a href="https://www.eng.uwo.ca/mechanical/">Mechanical and Materials Engineering</a>
+          </div>
+          <div class="poi" id="SEB-P2">
+            <div class="shot" role="img" aria-label="Screenshot placeholder: SEB-P2">Screenshot coming</div>
+            <div class="id">SEB-P2</div>
+            <h4>Lecture room SEB 1059</h4>
+            <p>SEB 1059 seats 222 in theatre-style fixed tab-arm seating. SEB 1200 nearby seats 200.</p>
+            <a href="https://www.eng.uwo.ca/undergraduate/">Undergraduate programs</a>
+          </div>
+          <div class="poi" id="SEB-P3">
+            <div class="shot" role="img" aria-label="Screenshot placeholder: SEB-P3">Screenshot coming</div>
+            <div class="id">SEB-P3</div>
+            <h4>A building that kept growing</h4>
+            <p>Western Facilities Management lists the 1957 original, a 1969 south addition, a 2002 classroom addition, the 2008 Claudette MacKay-Lassonde Pavilion and the 2016 ACEB addition.</p>
+            <a href="https://www.eng.uwo.ca/civil/">Civil and Environmental Engineering</a>
+          </div>
+          <div class="poi" id="SEB-P4">
+            <div class="shot" role="img" aria-label="Screenshot placeholder: SEB-P4">Screenshot coming</div>
+            <div class="id">SEB-P4</div>
+            <h4>Leonardo da Vinci Room (lower level)</h4>
+            <p>One floor down is the da Vinci Room, a cafeteria and lounge decorated with da Vinci murals. DaVinci's Cafe was added in 2019. The lower level is not modelled.</p>
+            <a href="https://www.eng.uwo.ca/future-students/">Future students</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="building" id="cmlp" aria-labelledby="cmlp-h">
+        <div class="building-head">
+          <div>
+            <h3 id="cmlp-h">Claudette MacKay-Lassonde Pavilion (CMLP)</h3>
+            <p class="meta">North of the hub, joined to SEB · opened 2009 · LEED Gold</p>
+            <p>A green-building pavilion with a living wall in its atrium and a bridge to TEB.</p>
+            <ul class="links">
+              <li><a href="https://www.eng.uwo.ca/departments-units/claudette-mackay-lassonde-pavilion/">About the pavilion (Western Engineering)</a></li>
+            </ul>
+          </div>
+          <div class="shot" role="img" aria-label="Screenshot placeholder: CMLP">
+            <!-- SCREENSHOT: img/cmlp.jpg (CMLP atrium) -->
+            Screenshot coming: CMLP
+          </div>
+        </div>
+        <div class="pois">
+          <div class="poi" id="CMLP-P1">
+            <div class="shot" role="img" aria-label="Screenshot placeholder: CMLP-P1">Screenshot coming</div>
+            <div class="id">CMLP-P1</div>
+            <h4>CMLP atrium</h4>
+            <p>The Claudette MacKay-Lassonde Pavilion opened Oct 3, 2009 (45,000 sq ft). Its atrium has a green wall fed by a rainwater cistern, bamboo, sweet grass and a 150-gallon fish tank. The rough stone wall is SEB's old outside wall.</p>
+            <a href="https://www.eng.uwo.ca/departments-units/claudette-mackay-lassonde-pavilion/">About the pavilion</a>
+          </div>
+          <div class="poi" id="CMLP-P2">
+            <div class="shot" role="img" aria-label="Screenshot placeholder: CMLP-P2">Screenshot coming</div>
+            <div class="id">CMLP-P2</div>
+            <h4>Western's first LEED building</h4>
+            <p>CMLP was Western's first LEED building (LEED Gold). Its roof has green sedum, a 1 kW wind turbine and two 1 kW solar panels. Architects: Shore Tilbe Irwin and Partners with Cornerstone Architecture.</p>
+            <a href="https://www.eng.uwo.ca/civil/">Civil and Environmental Engineering</a>
+          </div>
+          <div class="poi" id="CMLP-P3">
+            <div class="shot" role="img" aria-label="Screenshot placeholder: CMLP-P3">Screenshot coming</div>
+            <div class="id">CMLP-P3</div>
+            <h4>Bridge to TEB</h4>
+            <p>A walking bridge links the second floor of CMLP to the third floor of TEB. It carries strain gauges that monitor the structure. (Upper floors are not modelled.)</p>
+            <a href="https://www.eng.uwo.ca/civil/">Civil and Environmental Engineering</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="building" id="aceb" aria-labelledby="aceb-h">
+        <div class="building-head">
+          <div>
+            <h3 id="aceb-h">Amit Chakma Engineering Building (ACEB)</h3>
+            <p class="meta">West of the hub · opened 2018 · LEED Platinum</p>
+            <p>The newest building: a three-storey atrium, long galleries facing Western Road, and upper floors cantilevered over the plaza.</p>
+            <ul class="links">
+              <li><a href="https://www.eng.uwo.ca/departments-units/amit-chakma-engineering-building/innovative_features.html">ACEB innovative features (Western Engineering)</a></li>
+              <li><a href="https://virtualtour.uwo.ca/uwo/engineering/amit-chakma-engineering-building">Western's 360-degree tour of ACEB</a></li>
+            </ul>
+          </div>
+          <div class="shot" role="img" aria-label="Screenshot placeholder: ACEB">
+            <!-- SCREENSHOT: img/aceb.jpg (ACEB exterior or atrium) -->
+            Screenshot coming: ACEB
+          </div>
+        </div>
+        <div class="pois">
+          <div class="poi" id="ACEB-P1">
+            <div class="shot" role="img" aria-label="Screenshot placeholder: ACEB-P1">Screenshot coming</div>
+            <div class="id">ACEB-P1</div>
+            <h4>Atrium</h4>
+            <p>The Amit Chakma Engineering Building opened on Oct 12, 2018. Its three-storey atrium is the hub of the building and links to SEB. The white Skyfold wall folds up so classroom 1450 opens onto the atrium as a 4,500 sq ft exhibition space.</p>
+            <a href="https://www.eng.uwo.ca/future-students/">Future students</a>
+          </div>
+          <div class="poi" id="ACEB-P2">
+            <div class="shot" role="img" aria-label="Screenshot placeholder: ACEB-P2">Screenshot coming</div>
+            <div class="id">ACEB-P2</div>
+            <h4>Engineering Galleries</h4>
+            <p>Galleries on levels 1 and 2 run the full length of the building facing Western Road, with large self-tinting windows and study spaces.</p>
+            <a href="https://www.eng.uwo.ca/departments-units/amit-chakma-engineering-building/innovative_features.html">ACEB innovative features</a>
+          </div>
+          <div class="poi" id="ACEB-P3">
+            <div class="shot" role="img" aria-label="Screenshot placeholder: ACEB-P3">Screenshot coming</div>
+            <div class="id">ACEB-P3</div>
+            <h4>Tiered classrooms 1415 and 1420</h4>
+            <p>Two semicircular tiered classrooms reached by ramps. ACEB also has a 2,500 sq ft fabrication and prototyping space (not modelled).</p>
+            <a href="https://www.eng.uwo.ca/undergraduate/">Undergraduate programs</a>
+          </div>
+          <div class="poi" id="ACEB-P4">
+            <div class="shot" role="img" aria-label="Screenshot placeholder: ACEB-P4">Screenshot coming</div>
+            <div class="id">ACEB-P4</div>
+            <h4>The cantilever</h4>
+            <p>The upper floors reach about 30 ft (9 m) past the ground floor over this plaza. ACEB is LEED Platinum and uses regional steel, Canadian maple and Wiarton limestone. Architects: Perkins+Will with Cornerstone.</p>
+            <a href="https://www.eng.uwo.ca/departments-units/amit-chakma-engineering-building/innovative_features.html">ACEB innovative features</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="building" id="teb" aria-labelledby="teb-h">
+        <div class="building-head">
+          <div>
+            <h3 id="teb-h">Thompson Engineering Building (TEB)</h3>
+            <p class="meta">East of the hub · built 2002 to 2004 · four storeys</p>
+            <p>Home of two departments, with undergraduate teaching labs along its central corridor.</p>
+            <ul class="links">
+              <li><a href="https://www.eng.uwo.ca/electrical/">Electrical and Computer Engineering</a></li>
+              <li><a href="https://www.eng.uwo.ca/chemical/">Chemical and Biochemical Engineering</a></li>
+            </ul>
+          </div>
+          <div class="shot" role="img" aria-label="Screenshot placeholder: TEB">
+            <!-- SCREENSHOT: img/teb.jpg (TEB east facade) -->
+            Screenshot coming: TEB
+          </div>
+        </div>
+        <div class="pois">
+          <div class="poi" id="TEB-P1">
+            <div class="shot" role="img" aria-label="Screenshot placeholder: TEB-P1">Screenshot coming</div>
+            <div class="id">TEB-P1</div>
+            <h4>Thompson Engineering Building</h4>
+            <p>Built 2002 to 2004 for about $18.7M, designed by Nicholson Sheffield Architects. Home of Electrical and Computer, and Chemical and Biochemical Engineering.</p>
+            <a href="https://www.eng.uwo.ca/electrical/">Electrical and Computer Engineering</a>
+          </div>
+          <div class="poi" id="TEB-P2">
+            <div class="shot" role="img" aria-label="Screenshot placeholder: TEB-P2">Screenshot coming</div>
+            <div class="id">TEB-P2</div>
+            <h4>Teaching labs</h4>
+            <p>The ground floor is mostly undergraduate teaching labs off a central corridor. They are shown empty; no lab equipment is modelled.</p>
+            <a href="https://www.eng.uwo.ca/chemical/">Chemical and Biochemical Engineering</a>
+          </div>
+          <div class="poi" id="TEB-P3">
+            <div class="shot" role="img" aria-label="Screenshot placeholder: TEB-P3">Screenshot coming</div>
+            <div class="id">TEB-P3</div>
+            <h4>Four storeys and a bridge</h4>
+            <p>TEB has four storeys above ground plus a basement and penthouse. The bridge to CMLP leaves from the third floor.</p>
+            <a href="https://www.eng.uwo.ca/electrical/">Electrical and Computer Engineering</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <h2>About this prototype</h2>
+      <p class="lead">WEVE was built for SE3351 (Project Management) at Western University in Fall 2026 to test whether a free game-engine model can give prospective students a real sense of the engineering buildings before they visit.</p>
+      <ul class="steps">
+        <li>Building outlines, roads and paths: OpenStreetMap contributors (ODbL).</li>
+        <li>Ground-floor walls and room numbers: Western Facilities Management accessibility floor plans. Security hardware, equipment and room contents are not modelled.</li>
+        <li>Building facts: Western Engineering, Western News, Southside Group, Perkins+Will and Western Technology Services pages.</li>
+        <li>The real campus slopes down to the east; in the model each building's main connected level sits at ground level, and the grid is turned 3.82 degrees, so minimap north is slightly off true north.</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>WEVE prototype · SE3351 Group 20 · Western University, Fall 2026.</p>
+    <p>Student course project, not an official Western University website. Program links go to Western Engineering's own pages, <a href="https://www.eng.uwo.ca/">eng.uwo.ca</a>.</p>
+  </div>
+</footer>
+</body>
+</html>
