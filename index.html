@@ -42,7 +42,8 @@ h3 { font-size: 19px; margin: 0 0 4px; }
 .lead { color: var(--muted); margin: 0 0 18px; max-width: 70ch; }
 .shot { aspect-ratio: 16 / 9; border: 2px dashed var(--line); border-radius: 10px; background: var(--accent-soft);
   display: grid; place-items: center; text-align: center; color: var(--muted); font-size: 14px; padding: 12px; }
-.shot img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+.shot img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; display: block; }
+.shot.has-img { border: 0; padding: 0; background: none; overflow: hidden; border-radius: 8px; }
 .steps { padding-left: 20px; max-width: 70ch; }
 .steps li { margin-bottom: 6px; }
 kbd { font: 13px ui-monospace, Menlo, monospace; border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 0 5px; background: var(--surface); }
@@ -94,10 +95,7 @@ footer p { margin: 0 0 8px; max-width: 80ch; }
       <p class="notice">Student course project (SE3351, Group 20). Not an official Western University site.</p>
     </div>
 
-    <div class="shot" role="img" aria-label="Screenshot placeholder: aerial view of all four buildings">
-      <!-- SCREENSHOT: img/aerial.jpg (aerial view of all four buildings and the hub) -->
-      Screenshot coming: aerial view of the four buildings and the hub
-    </div>
+    <div class="shot has-img"><img src="img/aerial.jpg" alt="Aerial view of the WEVE world: the four engineering buildings around the hub plaza" width="800" height="500" loading="eager"></div>
   </div>
 
   <section id="play">
@@ -154,35 +152,32 @@ footer p { margin: 0 0 8px; max-width: 80ch; }
               <li><a href="https://www.eng.uwo.ca/civil/">Civil and Environmental Engineering</a></li>
             </ul>
           </div>
-          <div class="shot" role="img" aria-label="Screenshot placeholder: SEB">
-            <!-- SCREENSHOT: img/seb.jpg (SEB exterior or north-wing corridor) -->
-            Screenshot coming: SEB
-          </div>
+          <div class="shot has-img"><img src="img/seb.jpg" alt="Inside SEB: the north-wing corridor with numbered doors" width="560" height="350" loading="lazy"></div>
         </div>
         <div class="pois">
           <div class="poi" id="SEB-P1">
-            <div class="shot" role="img" aria-label="Screenshot placeholder: SEB-P1">Screenshot coming</div>
+            <div class="shot has-img"><img src="img/seb-p1.jpg" alt="Info point SEB-P1 in the world (Spencer Engineering Building): the lit kiosk that holds its signs" width="800" height="600" loading="lazy"></div>
             <div class="id">SEB-P1</div>
             <h4>Spencer Engineering Building</h4>
             <p>Built 1958-59 and opened Oct 30, 1959 (architect Ronald Murphy). Three storeys, Collegiate Gothic. Home of the Dean's office and of Mechanical and Materials, and Civil and Environmental Engineering.</p>
             <a href="https://www.eng.uwo.ca/mechanical/">Mechanical and Materials Engineering</a>
           </div>
           <div class="poi" id="SEB-P2">
-            <div class="shot" role="img" aria-label="Screenshot placeholder: SEB-P2">Screenshot coming</div>
+            <div class="shot has-img"><img src="img/seb-p2.jpg" alt="Info point SEB-P2 in the world (Lecture room SEB 1059): the lit kiosk that holds its signs" width="800" height="600" loading="lazy"></div>
             <div class="id">SEB-P2</div>
             <h4>Lecture room SEB 1059</h4>
             <p>SEB 1059 seats 222 in theatre-style fixed tab-arm seating. SEB 1200 nearby seats 200.</p>
             <a href="https://www.eng.uwo.ca/undergraduate/">Undergraduate programs</a>
           </div>
           <div class="poi" id="SEB-P3">
-            <div class="shot" role="img" aria-label="Screenshot placeholder: SEB-P3">Screenshot coming</div>
+            <div class="shot has-img"><img src="img/seb-p3.jpg" alt="Info point SEB-P3 in the world (A building that kept growing): the lit kiosk that holds its signs" width="800" height="600" loading="lazy"></div>
             <div class="id">SEB-P3</div>
             <h4>A building that kept growing</h4>
             <p>Western Facilities Management lists the 1957 original, a 1969 south addition, a 2002 classroom addition, the 2008 Claudette MacKay-Lassonde Pavilion and the 2016 ACEB addition.</p>
             <a href="https://www.eng.uwo.ca/civil/">Civil and Environmental Engineering</a>
           </div>
           <div class="poi" id="SEB-P4">
-            <div class="shot" role="img" aria-label="Screenshot placeholder: SEB-P4">Screenshot coming</div>
+            <div class="shot has-img"><img src="img/seb-p4.jpg" alt="Info point SEB-P4 in the world (Leonardo da Vinci Room (lower level)): the lit kiosk that holds its signs" width="800" height="600" loading="lazy"></div>
             <div class="id">SEB-P4</div>
             <h4>Leonardo da Vinci Room (lower level)</h4>
             <p>One floor down is the da Vinci Room, a cafeteria and lounge decorated with da Vinci murals. DaVinci's Cafe was added in 2019. The lower level is not modelled.</p>
@@ -201,28 +196,25 @@ footer p { margin: 0 0 8px; max-width: 80ch; }
               <li><a href="https://www.eng.uwo.ca/departments-units/claudette-mackay-lassonde-pavilion/">About the pavilion (Western Engineering)</a></li>
             </ul>
           </div>
-          <div class="shot" role="img" aria-label="Screenshot placeholder: CMLP">
-            <!-- SCREENSHOT: img/cmlp.jpg (CMLP atrium) -->
-            Screenshot coming: CMLP
-          </div>
+          <div class="shot has-img"><img src="img/cmlp.jpg" alt="The CMLP atrium with its green wall" width="800" height="500" loading="lazy"></div>
         </div>
         <div class="pois">
           <div class="poi" id="CMLP-P1">
-            <div class="shot" role="img" aria-label="Screenshot placeholder: CMLP-P1">Screenshot coming</div>
+            <div class="shot has-img"><img src="img/cmlp-p1.jpg" alt="Info point CMLP-P1 in the world (CMLP atrium): the lit kiosk that holds its signs" width="800" height="600" loading="lazy"></div>
             <div class="id">CMLP-P1</div>
             <h4>CMLP atrium</h4>
             <p>The Claudette MacKay-Lassonde Pavilion opened Oct 3, 2009 (45,000 sq ft). Its atrium has a green wall fed by a rainwater cistern, bamboo, sweet grass and a 150-gallon fish tank. The rough stone wall is SEB's old outside wall.</p>
             <a href="https://www.eng.uwo.ca/departments-units/claudette-mackay-lassonde-pavilion/">About the pavilion</a>
           </div>
           <div class="poi" id="CMLP-P2">
-            <div class="shot" role="img" aria-label="Screenshot placeholder: CMLP-P2">Screenshot coming</div>
+            <div class="shot has-img"><img src="img/cmlp-p2.jpg" alt="Info point CMLP-P2 in the world (Western's first LEED building): the lit kiosk that holds its signs" width="800" height="600" loading="lazy"></div>
             <div class="id">CMLP-P2</div>
             <h4>Western's first LEED building</h4>
             <p>CMLP was Western's first LEED building (LEED Gold). Its roof has green sedum, a 1 kW wind turbine and two 1 kW solar panels. Architects: Shore Tilbe Irwin and Partners with Cornerstone Architecture.</p>
             <a href="https://www.eng.uwo.ca/civil/">Civil and Environmental Engineering</a>
           </div>
           <div class="poi" id="CMLP-P3">
-            <div class="shot" role="img" aria-label="Screenshot placeholder: CMLP-P3">Screenshot coming</div>
+            <div class="shot has-img"><img src="img/cmlp-p3.jpg" alt="Info point CMLP-P3 in the world (Bridge to TEB): the lit kiosk that holds its signs" width="800" height="600" loading="lazy"></div>
             <div class="id">CMLP-P3</div>
             <h4>Bridge to TEB</h4>
             <p>A walking bridge links the second floor of CMLP to the third floor of TEB. It carries strain gauges that monitor the structure. (Upper floors are not modelled.)</p>
@@ -242,35 +234,32 @@ footer p { margin: 0 0 8px; max-width: 80ch; }
               <li><a href="https://virtualtour.uwo.ca/uwo/engineering/amit-chakma-engineering-building">Western's 360-degree tour of ACEB</a></li>
             </ul>
           </div>
-          <div class="shot" role="img" aria-label="Screenshot placeholder: ACEB">
-            <!-- SCREENSHOT: img/aceb.jpg (ACEB exterior or atrium) -->
-            Screenshot coming: ACEB
-          </div>
+          <div class="shot has-img"><img src="img/aceb.jpg" alt="ACEB from the outside, with the upper floors reaching out over the plaza" width="800" height="500" loading="lazy"></div>
         </div>
         <div class="pois">
           <div class="poi" id="ACEB-P1">
-            <div class="shot" role="img" aria-label="Screenshot placeholder: ACEB-P1">Screenshot coming</div>
+            <div class="shot has-img"><img src="img/aceb-p1.jpg" alt="Info point ACEB-P1 in the world (Atrium): the lit kiosk that holds its signs" width="800" height="600" loading="lazy"></div>
             <div class="id">ACEB-P1</div>
             <h4>Atrium</h4>
             <p>The Amit Chakma Engineering Building opened on Oct 12, 2018. Its three-storey atrium is the hub of the building and links to SEB. The white Skyfold wall folds up so classroom 1450 opens onto the atrium as a 4,500 sq ft exhibition space.</p>
             <a href="https://www.eng.uwo.ca/future-students/">Future students</a>
           </div>
           <div class="poi" id="ACEB-P2">
-            <div class="shot" role="img" aria-label="Screenshot placeholder: ACEB-P2">Screenshot coming</div>
+            <div class="shot has-img"><img src="img/aceb-p2.jpg" alt="Info point ACEB-P2 in the world (Engineering Galleries): the lit kiosk that holds its signs" width="800" height="600" loading="lazy"></div>
             <div class="id">ACEB-P2</div>
             <h4>Engineering Galleries</h4>
             <p>Galleries on levels 1 and 2 run the full length of the building facing Western Road, with large self-tinting windows and study spaces.</p>
             <a href="https://www.eng.uwo.ca/departments-units/amit-chakma-engineering-building/innovative_features.html">ACEB innovative features</a>
           </div>
           <div class="poi" id="ACEB-P3">
-            <div class="shot" role="img" aria-label="Screenshot placeholder: ACEB-P3">Screenshot coming</div>
+            <div class="shot has-img"><img src="img/aceb-p3.jpg" alt="Info point ACEB-P3 in the world (Tiered classrooms 1415 and 1420): the lit kiosk that holds its signs" width="800" height="600" loading="lazy"></div>
             <div class="id">ACEB-P3</div>
             <h4>Tiered classrooms 1415 and 1420</h4>
             <p>Two semicircular tiered classrooms reached by ramps. ACEB also has a 2,500 sq ft fabrication and prototyping space (not modelled).</p>
             <a href="https://www.eng.uwo.ca/undergraduate/">Undergraduate programs</a>
           </div>
           <div class="poi" id="ACEB-P4">
-            <div class="shot" role="img" aria-label="Screenshot placeholder: ACEB-P4">Screenshot coming</div>
+            <div class="shot has-img"><img src="img/aceb-p4.jpg" alt="Info point ACEB-P4 in the world (The cantilever): the lit kiosk that holds its signs" width="800" height="600" loading="lazy"></div>
             <div class="id">ACEB-P4</div>
             <h4>The cantilever</h4>
             <p>The upper floors reach about 30 ft (9 m) past the ground floor over this plaza. ACEB is LEED Platinum and uses regional steel, Canadian maple and Wiarton limestone. Architects: Perkins+Will with Cornerstone.</p>
@@ -290,28 +279,25 @@ footer p { margin: 0 0 8px; max-width: 80ch; }
               <li><a href="https://www.eng.uwo.ca/chemical/">Chemical and Biochemical Engineering</a></li>
             </ul>
           </div>
-          <div class="shot" role="img" aria-label="Screenshot placeholder: TEB">
-            <!-- SCREENSHOT: img/teb.jpg (TEB east facade) -->
-            Screenshot coming: TEB
-          </div>
+          <div class="shot has-img"><img src="img/teb.jpg" alt="TEB's east side, where the main entrance faces the parking lot" width="800" height="500" loading="lazy"></div>
         </div>
         <div class="pois">
           <div class="poi" id="TEB-P1">
-            <div class="shot" role="img" aria-label="Screenshot placeholder: TEB-P1">Screenshot coming</div>
+            <div class="shot has-img"><img src="img/teb-p1.jpg" alt="Info point TEB-P1 in the world (Thompson Engineering Building): the lit kiosk that holds its signs" width="800" height="600" loading="lazy"></div>
             <div class="id">TEB-P1</div>
             <h4>Thompson Engineering Building</h4>
             <p>Built 2002 to 2004 for about $18.7M, designed by Nicholson Sheffield Architects. Home of Electrical and Computer, and Chemical and Biochemical Engineering.</p>
             <a href="https://www.eng.uwo.ca/electrical/">Electrical and Computer Engineering</a>
           </div>
           <div class="poi" id="TEB-P2">
-            <div class="shot" role="img" aria-label="Screenshot placeholder: TEB-P2">Screenshot coming</div>
+            <div class="shot has-img"><img src="img/teb-p2.jpg" alt="Info point TEB-P2 in the world (Teaching labs): the lit kiosk that holds its signs" width="800" height="600" loading="lazy"></div>
             <div class="id">TEB-P2</div>
             <h4>Teaching labs</h4>
             <p>The ground floor is mostly undergraduate teaching labs off a central corridor. They are shown empty; no lab equipment is modelled.</p>
             <a href="https://www.eng.uwo.ca/chemical/">Chemical and Biochemical Engineering</a>
           </div>
           <div class="poi" id="TEB-P3">
-            <div class="shot" role="img" aria-label="Screenshot placeholder: TEB-P3">Screenshot coming</div>
+            <div class="shot has-img"><img src="img/teb-p3.jpg" alt="Info point TEB-P3 in the world (Four storeys and a bridge): the lit kiosk that holds its signs" width="800" height="600" loading="lazy"></div>
             <div class="id">TEB-P3</div>
             <h4>Four storeys and a bridge</h4>
             <p>TEB has four storeys above ground plus a basement and penthouse. The bridge to CMLP leaves from the third floor.</p>
